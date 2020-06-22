@@ -27,31 +27,33 @@ body{
 }
 .header{
   grid-area: header;
-  background-color: #265077;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #1b80c4;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .brand a{
-  color: #ffffff;
+  font-family:Arial;
+  color:#1b80c4;
   font-size: 3rem;
   font-weight: bold;
   text-decoration: none;
+  padding: 1rem;
 }
 .header-links a{
-  color:#ffffff;
+  color:#1b80c4;
   text-decoration: none;
   padding: 1rem;
-
 }
 .header-links a:hover{
   color:#ff8000;
 }
 .main{
   grid-area: main;
-  background-color: rgba(45,95,93,0.4) ;
+  background-color: rgba(245, 245, 245, 0.411) ;
 }
 .footer{
   grid-area: footer;
@@ -114,16 +116,21 @@ a:hover{
   padding: .5rem;
   background: none;
   border: none;
-  color:#ffffff;
+  color:#1b80c4;
   cursor: pointer;
+}
+.brand button:hover{
+  color:#ff8000
 }
 .sidebar{
   position: fixed;
   /* transition: all .5se; */
   transform: translateX(-30rem);
-  width: 30rem;
-  background-color: #f0f0f0;
+  width: 25rem;
+  background-color: rgb(90, 90, 90);
   height: 100%;
+  border-right:1px solid #ccc!important;
+  overflow: hidden;
 }
 .sidebar.open{
   transform: translateX(0);
@@ -141,4 +148,14 @@ a:hover{
   position: absolute;
   right: .5rem;
   top: 1.5rem
+}
+.item {
+  padding:0px 16px 8px 16px ;float:left;width:auto;border:none;display:block;outline:0;
+  color: rgba(255, 255, 255, 0.822);
+}
+.item-btn{
+  width:100%;text-align:left;padding:10px 16px;
+}
+.item-btn:hover{
+  background-color:rgb(73, 73, 73)!important
 }
