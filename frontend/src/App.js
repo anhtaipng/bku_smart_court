@@ -1,9 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
+
+import { useSelector } from 'react-redux';
 
 function App() {
-  const openMenu = () => { 
+
+  const openMenu = () => {
     document.querySelector(".sidebar").classList.add("open");
   }
   const closeMenu = () => {
@@ -11,103 +17,49 @@ function App() {
   }
 
   return (
-    <div className="grid-container">
-    <header className="header">
-      <div className="brand">
-        <button onClick={openMenu}>
-          &#9776;
+    <BrowserRouter>
+      <div className="grid-container">
+        <header className="header">
+          <div className="brand">
+            <button onClick={openMenu}>
+              &#9776;
         </button>
-        <a href="index.html">Bach Khoa Smart Food Court</a>
-      </div>
-      <div className="header-links">
-        <a href="cart.html">Cart</a>
-        <a href="signin.html">Sign In</a>
-      </div>
-    </header>
-    <aside className="sidebar">
-      <h3 className="item" >Shopping Categories</h3>
-      <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-      <a className="item item-btn" href="index.html">Food</a>
-      <a className="item item-btn" href="index.html">Drinks</a>
-    </aside>
-    <main className="main">
-      <div className="content">
-        <ul className="products">
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/FastFood.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Bánh mỳ</a>
-              </div>
-              <div className="product-brand">Kitchen</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/FastFood.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Coca</a>
-              </div>
-              <div className="product-brand">Kitchen</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/FastFood.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Pepsi</a>
-              </div>
-              <div className="product-brand">Kitchen</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/FastFood.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Bún bò</a>
-              </div>
-              <div className="product-brand">Kitchen</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/FastFood.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Hambuger</a>
-              </div>
-              <div className="product-brand">Kitchen</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/FastFood.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Phở</a>
-              </div>
-              <div className="product-brand">Kitchen</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
+            <Link to="/">BKU Food Court</Link>
+          </div>
+          <div className="header-links">
+            <Link to="/cart">Cart</Link>
+            <Link to="/signin">Sign in</Link>
+          </div>
+        </header>
+        <aside className="sidebar">
+          <h3>Shopping Categories</h3>
+          <button className="sidebar-close-button" onClick={closeMenu}>x</button>
+          <ul>
+            <li>
+              <a href="index.html">Food</a>
+            </li>
 
-        </ul>
-      </div>
+            <li>
+              <a href="index.html">Drinks</a>
+            </li>
 
-    </main>
-    <footer className="footer">
-      All right reserved.
+          </ul>
+        </aside>
+        <main className="main">
+          <div className="content">
+            
+            <Route path="/product/:id" component={ProductScreen} />
+            
+            <Route exact path="/" component={HomeScreen} />
+
+          </div>
+
+        </main>
+        <footer className="footer">
+          4T1S
     </footer>
-  </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
