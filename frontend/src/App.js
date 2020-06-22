@@ -17,7 +17,7 @@ function App() {
         <button onClick={openMenu}>
           &#9776;
         </button>
-        <a href="index.html">BKU Food Court</a>
+        <a href="index.html">Bach Khoa Smart Food Court</a>
       </div>
       <div className="header-links">
         <a href="cart.html">Cart</a>
