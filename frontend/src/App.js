@@ -42,18 +42,10 @@ function App() {
           </div>
         </header>
         <aside className="sidebar">
-          <h3>Shopping Categories</h3>
+          <h3 className="item">Shopping Categories</h3>
           <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-          <ul>
-            <li>
-              <a href="index.html">Food</a>
-            </li>
-
-            <li>
-              <a href="index.html">Drinks</a>
-            </li>
-
-          </ul>
+              <a className="item item-btn" href="index.html">Food</a>
+              <a className="item item-btn" href="index.html">Drinks</a>
         </aside>
         <main className="main">
           <div className="content">
