@@ -31,8 +31,9 @@ body{
   height: 100%;
 }
 .header{
+  
   grid-area: header;
-  background-color: #4e9af0;
+  
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -53,6 +54,11 @@ body{
   text-decoration: none;
   padding: 1rem;
 }
+.header-links img{
+  padding: 0rem;
+  margin-top: 0px;
+  margin-bottom: -6px;
+}
 .header-links a:hover{
   color:#ff8000;
 }
@@ -62,11 +68,12 @@ body{
 }
 .footer{
   grid-area: footer;
-  background-color: #4e9af0;
+  
   color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 a{
   text-decoration: none;

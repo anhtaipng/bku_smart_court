@@ -32,13 +32,13 @@ function ProductScreen(props) {
                     <div className="details-info">
                         <ul>
                             <li>
-                                <h4>{product.name}</h4>
+                                <h4>•       {product.name}</h4>
                             </li>
                             <li>
-                                {product.rating} Stars ({product.numReviews} Reviews)
+                            •        {product.rating} Stars ({product.numReviews} Reviews)
                     </li>
                             <li>
-                                Price: <b>${product.price}</b>
+                            •       Price: <b>${product.price}</b>
                             </li>
                             <li>
                                 {product.description}

@@ -23,10 +23,13 @@ function App() {
           <div className="brand">
             <button onClick={openMenu}>
               &#9776;
-        </button>
+             </button>
             <Link to="/">BKU Food Court</Link>
           </div>
           <div className="header-links">
+            <Link to='/cart'> 
+              <img  src='../images/cart.jpg' alt="Cart" width="34" height="30"/>
+            </Link>
             <Link to="/cart">Cart</Link>
             <Link to="/signin">Sign in</Link>
           </div>
@@ -55,7 +58,7 @@ function App() {
           </div>
 
         </main>
-        <footer className="footer">
+    <footer className="footer">
           4T1S
     </footer>
       </div>
