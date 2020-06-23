@@ -73,7 +73,7 @@ body{
     top: 0;
     width: 100%;
     height: auto;
-    opacity: 0.6;
+    opacity: 0.3;
 }
 .footer{
   grid-area: footer;
