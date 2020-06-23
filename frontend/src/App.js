@@ -7,8 +7,14 @@ import ProductScreen from './screens/ProductScreen';
 
 import { useSelector } from 'react-redux';
 import CartScreen from './screens/CartScreen';
+import SigninScreen from './screens/SigninScreen';
 
 function App() {
+
+
+  const userSignin = useSelector(state => state.userSignin);
+  const { userInfo } = userSignin;
+
 
   const openMenu = () => {
     document.querySelector(".sidebar").classList.add("open");
@@ -53,7 +59,7 @@ function App() {
           <div className="content">
             <Route path="/cart/:id?" component={CartScreen} />
             <Route path="/product/:id" component={ProductScreen} />
-            
+            <Route path="/signin" component={SigninScreen} />
             <Route exact path="/" component={HomeScreen} />
 
           </div>
