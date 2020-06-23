@@ -14,11 +14,7 @@ body{
   font: 1.6rem Helvetica;
   height: 100vh;
   margin: 0;
-  background-image: url("/images/bg.jpg");
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: cover;        
-  background-attachment: scroll;
+  
 }
 .grid-container{
   display: grid;
@@ -30,26 +26,25 @@ body{
   grid-template-rows: 5rem 1fr 5rem;
 }
 .header{
-  
   grid-area: header;
-  
-  color: #ffffff;
+  background-color: #f1f1f1;
+  color: #1b80c4;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .brand a{
   font-family:Arial;
-  color:#ffffff;
+  color:#1b80c4;
   font-size: 3rem;
   font-weight: bold;
   text-decoration: none;
   padding: 1rem;
 }
 .header-links a{
-  color:#ffffff;
+  color:#1b80c4;
   text-decoration: none;
   padding: 1rem;
 }
@@ -62,19 +57,32 @@ body{
   color:#ff8000;
 }
 .main{
+  position: relative;
+    overflow: hidden;
   grid-area: main;
-  background-color: rgba(245, 245, 245, 0.411) ;
   min-height: 100%;
+  background-color: rgba(245, 245, 245, 0.411) ;
+}
+.content{
+  position: relative;
+    z-index: 2;
+}
+.background{
+  position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.6;
 }
 .footer{
   grid-area: footer;
-  
-  
   color: #ffffff;
+  background-color: rgb(109, 109, 109);
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.5), 0 -6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 a{
   text-decoration: none;
@@ -144,6 +152,7 @@ a:hover{
   height: 100%;
   border-right:1px solid #ccc!important;
   overflow: hidden;
+  z-index: 3;
 }
 .sidebar.open{
   transform: translateX(0);
