@@ -32,13 +32,13 @@ function ProductScreen(props) {
                     <div className="details-info">
                         <ul>
                             <li>
-                                <h4>•       {product.name}</h4>
+                                <h1>•       {product.name}</h1>
                             </li>
                             <li>
-                            •        {product.rating} Stars ({product.numReviews} Reviews)
-                    </li>
+                                <h2>•        {product.rating} Stars ({product.numReviews} Reviews)</h2>
+                            </li>
                             <li>
-                            •       Price: <b>${product.price}</b>
+                                <h2>•       Price: <b>${product.price}</b> </h2>
                             </li>
                             <li>
                                 {product.description}
@@ -51,7 +51,7 @@ function ProductScreen(props) {
                                 Price: {product.price}
                             </li>
                             <li>
-                                Status: {product.countInStock>0?"In Stock":"Unavailable"}
+                                Status: {product.countInStock > 0 ? "In Stock" : "Unavailable"}
                             </li>
                             <li>
                                 Quanlity: <select value={qty} onChange={(e) => { setQty(e.target.value) }}>
@@ -62,7 +62,7 @@ function ProductScreen(props) {
                                 </select>
                             </li>
                             <li>
-                                {product.countInStock>0&&<button onClick={handleAddToCart} className="button">Add To Carl</button>}
+                                {product.countInStock > 0 && <button onClick={handleAddToCart} className="button">Add To Carl</button>}
                             </li>
                         </ul>
                     </div>
