@@ -314,6 +314,7 @@ CART
   justify-content: center;
   align-items: center;
   height: 100%;
+  
 }
 .form-container{
   display: flex;
@@ -323,7 +324,7 @@ CART
   border: .1rem #c0c0c0 solid;
   border-radius: .5rem;
   list-style-type: none;
-  background-color: #1b80c4 solid;
+  background-color: #6c7c86;
 }
 .form-container li{
   display: flex;
