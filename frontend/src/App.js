@@ -5,11 +5,20 @@ import './App.css';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
+import { logout } from './actions/userActions';
+import RegisterScreen from './screens/RegisterScreen';
 function App() {
 
+   ///////////////////////
+   const dispatch = useDispatch();
+   const handleLogout = () => {
+     dispatch(logout());
+     //props.history.push("/signin");
+   }
+   ///////////////////////
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
@@ -36,8 +45,10 @@ function App() {
             <Link to='/cart'> 
               <img  src='../images/cart.jpg' alt="Cart" width="34" height="30"/>
             </Link>
-            <Link to="/cart">Cart</Link>
-            <Link to="/signin">Sign in</Link>
+            {
+              userInfo ? <Link onClick={handleLogout} >{userInfo.name}</Link>:
+                <Link to="/signin">Sign In</Link>
+            }
           </div>
         </header>
         <aside className="sidebar">
@@ -51,6 +62,7 @@ function App() {
             <Route path="/cart/:id?" component={CartScreen} />
             <Route path="/product/:id" component={ProductScreen} />
             <Route path="/signin" component={SigninScreen} />
+            <Route path="/register" component={RegisterScreen} />
             <Route exact path="/" component={HomeScreen} />
           </div>
           <img className="background" src="/images/bg.jpg"></img>

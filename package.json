@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/anhtaipng/bku_smart_court#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.3",

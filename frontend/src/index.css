@@ -58,7 +58,7 @@ body{
 }
 .main{
   position: relative;
-    overflow: hidden;
+  overflow: hidden;
   grid-area: main;
   min-height: 100%;
   background-color: rgba(245, 245, 245, 0.411) ;
