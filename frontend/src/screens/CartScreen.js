@@ -50,11 +50,11 @@ function CartScreen(props){
                         <div className="cart-name">
                             <div>
                                 <Link to={"/products/" + item.product}>
-                                     {item.name }
+                                • {item.name }
                                 </Link>
                             </div>
                             <div>
-                                Qty:
+                            • Quantity:
                                 <select value={item.qty} onChange={(e) => dispatch(addToCart(item.product, e.target.value))}>
                                     {[...Array(item.countInStock).keys()].map(x => 
                                         <option key = {x+1} value={x + 1} > {x+ 1}</option>
@@ -74,6 +74,9 @@ function CartScreen(props){
                     )
             }
         </ul>
+        <div>
+        <Link to="/"><h3>Order something else?</h3> </Link>
+        </div>
     </div>
     <div className="cart-action">
             <h3>
@@ -85,6 +88,9 @@ function CartScreen(props){
                 Proceed to Checkout
             </button>
     </div>
+    
+       
+    
 </div>
 }
 

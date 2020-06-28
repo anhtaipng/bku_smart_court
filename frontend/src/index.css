@@ -267,6 +267,8 @@ CART
   flex-wrap: wrap;
   margin: 1rem;
   align-items: flex-start;
+  height: 100rem;
+
 }
 
 .cart-list{

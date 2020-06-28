@@ -9,7 +9,7 @@ export default {
             brand: 'Kitchen',
             rating: 4.5,
             numReviews: 10,
-            countInStock: 8,
+            countInStock: 80,
         },
         {
             _id:'46',
@@ -20,7 +20,7 @@ export default {
             brand: 'Kitchen',
             rating: 4.5,
             numReviews: 10,
-            countInStock: 0,
+            countInStock: 1,
         },
         {
             _id:'47',
