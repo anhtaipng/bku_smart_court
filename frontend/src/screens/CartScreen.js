@@ -50,20 +50,27 @@ function CartScreen(props){
                         <div className="cart-name">
                             <div>
                                 <Link to={"/products/" + item.product}>
+                                <h2>
                                 • {item.name }
+                                </h2>
                                 </Link>
                             </div>
                             <div>
-                            • Quantity:
-                                <select value={item.qty} onChange={(e) => dispatch(addToCart(item.product, e.target.value))}>
+                           <h3>
+                           • Quantity: {item.qty}
+                            </h3>
+                                {/* <select value={item.qty} onChange={(e) => dispatch(addToCart(item.product, e.target.value))}>
                                     {[...Array(item.countInStock).keys()].map(x => 
                                         <option key = {x+1} value={x + 1} > {x+ 1}</option>
                                         )
                                     }
-                                </select>
+                                </select> */}
+                                <div>
                                 <button className="button" type="button" onClick={() => removeFromCartHandler(item.product)}>
-                                    Delete
+                                   Delete
                                 </button>
+                                </div>
+                                
                             </div>
                         </div>
                         <div className="cart-price">
