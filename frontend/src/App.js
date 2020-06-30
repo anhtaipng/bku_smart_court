@@ -11,6 +11,7 @@ import SigninScreen from './screens/SigninScreen';
 import { logout } from './actions/userActions';
 import RegisterScreen from './screens/RegisterScreen';
 import ProductsScreen from './screens/ProductsScreen';
+import ShippingScreen from './screens/ShippingScreen';
 function App() {
 
   ///////////////////////
@@ -60,6 +61,7 @@ function App() {
                   <li>
                     <Link to="/orders">Orders</Link>
                     <Link to="/products">Products</Link>
+                    
                   </li>
                 </ul>
               </div>
@@ -80,7 +82,7 @@ function App() {
             <Route path="/register" component={RegisterScreen} />
             <Route exact path="/" component={HomeScreen} />
             <Route path="/products" component={ProductsScreen} />
-
+              <Route path="/shipping" component={ShippingScreen} />
 
           </div>
           <img className="background" src="/images/bg.jpg"></img>
