@@ -85,6 +85,70 @@ app.post("/api/users/register", (req, res) => {
 
 });
 
+
+//xu ly create new product
+app.post("/api/products", (req, res) => {
+  var sql = "INSERT INTO products(name,category,image,price,brand,rating,numReviews,countInStock) VALUES(?,?,?,?,?,?,?,?)";
+  const prepare = [req.body.name, req.body.category, req.body.image, req.body.price, req.body.brand, 0, 0, req.body.countInStock];
+  sql = connection.format(sql, prepare);
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    console.log("Create thanh cong");
+  });
+
+  sql = "SELECT * FROM products";
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    const newProduct = results.find(x => x.name === req.body.name);
+    if (newProduct) {
+      return res.status(201).send({ message: 'New Product Created', data: newProduct });
+    }
+    return res.status(500).send({ message: ' Error in Creating Product.' });
+  })
+})
+
+//xu ly edit product
+app.put("/api/products/:id", (req, res) => {
+  const productId = req.params.id;
+  var sql = "UPDATE products SET name=? , category=? , image=? , price=? , brand=? , countInStock=? WHERE _id = ?"
+  const prepare = [req.body.name, req.body.category, req.body.image, req.body.price, req.body.brand, req.body.countInStock, productId];
+  connection.query(sql, prepare, function (err, results) {
+    if (err) throw err;
+    console.log("Create thanh cong");
+  });
+  sql = "SELECT * FROM products";
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    const updateProduct = results.find(x => x._id === parseInt(productId));
+    if (updateProduct) {
+      return res.status(200).send({ message: 'Product Updated', data: updateProduct });
+    }
+    return res.status(500).send({ message: ' Error in Creating Product.' });
+  })
+});
+
+
+//xu ly xoa product
+app.delete("/api/products/:id", (req, res) => {
+  const productId = req.params.id;
+  var sql = "DELETE FROM products WHERE _id = "+productId;
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    console.log("Delete thanh cong");
+  });
+  sql = "SELECT * FROM products";
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    const deletedProduct = results.find(x => x._id === parseInt(productId));
+    if (deletedProduct) {
+      res.send({ message: "Product Deleted" });
+    } else {
+      res.send("Error in Deletion.");
+    }
+  });
+
+});
+
 app.listen(5000, () => {
     console.log("server at port 5000");
 })
