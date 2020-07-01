@@ -80,7 +80,7 @@ function ProductsScreen(props) {
     const deleteHandler = (product) => {
         dispatch(deleteProduct(product._id));
     };
-    return <div>{isadmin && (
+    return <div>{isadmin && 
         <div className="content content-margined">
             <div className="product-header">
                 <h3>Products</h3>
@@ -229,6 +229,6 @@ function ProductsScreen(props) {
                 </table>
             </div>
         </div>
-    )}What are you doing ???</div>
+    }</div>
 }
 export default ProductsScreen;

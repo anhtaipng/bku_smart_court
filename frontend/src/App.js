@@ -8,7 +8,6 @@ import ProductScreen from './screens/ProductScreen';
 import { useSelector, useDispatch } from 'react-redux';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
-import { logout } from './actions/userActions';
 import RegisterScreen from './screens/RegisterScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import PaymentScreen from './screens/PaymentScreen';
@@ -48,7 +47,7 @@ function App() {
               userInfo ? <Link to="/profile" >{userInfo.name}</Link> :
                 <Link to="/signin">Sign In</Link>
             }
-            {userInfo && userInfo.isAdmin && (
+            {userInfo && userInfo.isAdmin && 
               <div className="dropdown">
                 <a href="#">Manager</a>
                 <ul className="dropdown-content">
@@ -59,7 +58,7 @@ function App() {
                   </li>
                 </ul>
               </div>
-            )}
+            }
           </div>
         </header>
         <aside className="sidebar">
