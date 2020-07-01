@@ -8,6 +8,11 @@ import {
 } from '../actions/productActions';
 
 function ProductsScreen(props) {
+
+    const userSignin = useSelector(state => state.userSignin);
+    const { userInfo } = userSignin;
+    const isadmin = userInfo.isAdmin;
+
     const [modalVisible, setModalVisible] = useState(false);
     const [id, setId] = useState('');
     const [name, setName] = useState('');
@@ -75,7 +80,7 @@ function ProductsScreen(props) {
     const deleteHandler = (product) => {
         dispatch(deleteProduct(product._id));
     };
-    return (
+    return <div>{isadmin && (
         <div className="content content-margined">
             <div className="product-header">
                 <h3>Products</h3>
@@ -115,18 +120,6 @@ function ProductsScreen(props) {
                                     onChange={(e) => setPrice(e.target.value)}
                                 ></input>
                             </li>
-                            {/* <li>
-                <label htmlFor="image">Image</label>
-                <input
-                  type="text"
-                  name="image"
-                  value={image}
-                  id="image"
-                  onChange={(e) => setImage(e.target.value)}
-                ></input>
-                <input type="file" onChange={uploadFileHandler}></input>
-                {uploading && <div>Uploading...</div>}
-              </li> */}
                             <li>
                                 <label htmlFor="price">Image</label>
                                 <input
@@ -236,6 +229,6 @@ function ProductsScreen(props) {
                 </table>
             </div>
         </div>
-    );
+    )}What are you doing ???</div>
 }
 export default ProductsScreen;

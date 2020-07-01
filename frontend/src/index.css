@@ -132,6 +132,7 @@ a:hover{
 .product-image{
   max-width: 34rem;
   max-height: 34rem;
+  border-radius: 20%;
 }
 .product-rating{
   margin-bottom: 2rem;
@@ -462,6 +463,7 @@ tbody > tr:nth-child(odd) {
   position: relative;
 }
 .dropdown-content {
+  color: white;
   position: absolute;
   display: none;
   right: 0;

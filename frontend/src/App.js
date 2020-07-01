@@ -11,16 +11,10 @@ import SigninScreen from './screens/SigninScreen';
 import { logout } from './actions/userActions';
 import RegisterScreen from './screens/RegisterScreen';
 import ProductsScreen from './screens/ProductsScreen';
-import ShippingScreen from './screens/ShippingScreen';
+import PaymentScreen from './screens/PaymentScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import ProfileScreen from './screens/ProfileScreen';
 function App() {
-
-  ///////////////////////
-  const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(logout());
-    //props.history.push("/signin");
-  }
-  ///////////////////////
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
@@ -48,20 +42,20 @@ function App() {
           <div className="header-links">
             <Link to='/cart'>
               <img src='../images/cart.png' alt="Cart" width="34" height="30" />
-              {cartItems.reduce((a, c) => a += c.qty, null)}            
+              {cartItems.reduce((a, c) => a += c.qty, null)}
             </Link>
             {
-              userInfo ? <Link onClick={handleLogout} >{userInfo.name}</Link> :
+              userInfo ? <Link to="/profile" >{userInfo.name}</Link> :
                 <Link to="/signin">Sign In</Link>
             }
             {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
-                <a href="#">Admin</a>
+                <a href="#">Manager</a>
                 <ul className="dropdown-content">
                   <li>
                     <Link to="/orders">Orders</Link>
                     <Link to="/products">Products</Link>
-                    
+
                   </li>
                 </ul>
               </div>
@@ -82,8 +76,9 @@ function App() {
             <Route path="/register" component={RegisterScreen} />
             <Route exact path="/" component={HomeScreen} />
             <Route path="/products" component={ProductsScreen} />
-              <Route path="/shipping" component={ShippingScreen} />
-
+            <Route path="/payment" component={PaymentScreen} />
+            <Route path="/placeorder" component={PlaceOrderScreen} />
+            <Route path="/profile" component={ProfileScreen} />
           </div>
           <img className="background" src="/images/bg.jpg"></img>
         </main>

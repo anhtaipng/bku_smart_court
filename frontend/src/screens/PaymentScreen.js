@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-function ShippingScreen() {
-    return  <div className="form">
-    <form >
+function PaymentScreen(props) {
+  const submitHandler = (e) => {
+    props.history.push('placeorder');
+  };
+
+  return <div className="form">
+    <form onSubmit={submitHandler}>
       <ul className="form-container">
         <li>
           <h2>Payment</h2>
@@ -23,16 +27,16 @@ function ShippingScreen() {
         </li>
         <li>
           <label htmlFor="password"> <b>Password</b></label>
-          <input type="password" placeholder="Password"  id="password" name="password">
+          <input type="password" placeholder="Password" id="password" name="password">
           </input>
         </li>
         <li>
-          <button type="submit"  className="button primary"> Pay </button>
+          <button type="submit" className="button primary"> Pay </button>
         </li>
-        
+
 
       </ul>
     </form>
   </div>
 }
-export default ShippingScreen;
+export default PaymentScreen;
