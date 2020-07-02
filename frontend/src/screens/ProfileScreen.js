@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { logout } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +15,9 @@ function ProfileScreen(props) {
     }
     window.onload();
 
-    
+    setTimeout(function () {
+        window.location.reload(1);
+    }, 10000);
 
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -44,6 +47,11 @@ function ProfileScreen(props) {
 
         };
     }, [userInfo])
+
+    const takenHandler = (_id_order) =>{
+        axios.put("/api/customer", {_id_order});
+        window.location.reload();
+    }
 
     return <div className="profile">
         <div className="profile-info">
@@ -85,9 +93,9 @@ function ProfileScreen(props) {
                                     <th>ID</th>
                                     <th>DATE</th>
                                     <th>TOTAL</th>
-                                    <th>isReady</th>
-                                    <th>isReceived</th>
+                                    <th>Status</th>
                                     <th>Detail</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,8 +103,7 @@ function ProfileScreen(props) {
                                     <td>{order._id_order}</td>
                                     <td>{order.date}</td>
                                     <td>{order.totalPrice}</td>
-                                    <td>{order.isDone?"Yes":"No"}</td>
-                                    <td>{order.isReceived?"Yes":"No"}</td>
+                                    <td>{order.isDone?order.isReceived?"Done":"Your food is ready! Please come to the vendor and take it!":"Your food is not ready!"}</td>
                                     <td>
                                         <div className="dropdown">
                                             <a href="#">Detail</a>
@@ -107,6 +114,7 @@ function ProfileScreen(props) {
                                             </ul>
                                         </div>
                                     </td>
+                                    <td>{order.isReceived?"":<button className="button" onClick={() => takenHandler(order._id_order)}>I had it!</button>}</td>
                                 </tr>)}
                             </tbody>
                         </table>

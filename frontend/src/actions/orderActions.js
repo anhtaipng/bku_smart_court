@@ -39,6 +39,18 @@ const listOrders = () => async (dispatch, getState) => {
   }
 }
 
+const listChefOrders = () => async (dispatch, getState) => {
+
+  try {
+    dispatch({ type: ORDER_LIST_REQUEST });
+    const { userSignin: { userInfo } } = getState();
+    const { data } = await Axios.get("/api/chef");
+    dispatch({ type: ORDER_LIST_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({ type: ORDER_LIST_FAIL, payload: error.message });
+  }
+}
+
 const detailsOrder = (orderId) => async (dispatch, getState) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST, payload: orderId });
@@ -60,4 +72,4 @@ const deleteOrder = (orderId) => async (dispatch, getState) => {
     dispatch({ type: ORDER_DELETE_FAIL, payload: error.message });
   }
 }
-export { createOrder, detailsOrder, listMyOrders, listOrders, deleteOrder };
+export { createOrder, detailsOrder, listMyOrders, listOrders, deleteOrder, listChefOrders };

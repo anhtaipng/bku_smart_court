@@ -20,10 +20,17 @@ connection.connect(function (err) {
 
 //tai data cho home screen
 app.get("/api/products", (req, res) => {
-  const sql = "SELECT * FROM products";
+  const category = req.query.category ? req.query.category : '';
+  var sql;
+  sql = "SELECT * FROM products";
   connection.query(sql, function (err, results) {
     if (err) throw err;
-    res.json(results);
+    if (category == '')
+      res.json(results);
+    else {
+      const products = results.filter(x => x.category === category);
+      res.json(products);
+    }
   });
 });
 
@@ -51,6 +58,7 @@ app.post("/api/users/signin", (req, res) => {
           name: signinUser.name,
           email: signinUser.email,
           isAdmin: signinUser.isAdmin,
+          isChef: signinUser.isChef,
         });
       else res.status(401).send({ message: 'Password wrong.' });
     }
@@ -61,8 +69,8 @@ app.post("/api/users/signin", (req, res) => {
 
 //xu ly register
 app.post("/api/users/register", (req, res) => {
-  var sql = "INSERT INTO users(name,email,password,isAdmin) VALUES(?,?,?,?)";
-  const prepare = [req.body.name, req.body.email, req.body.password, 0];
+  var sql = "INSERT INTO users(name,email,password,isAdmin,isChef) VALUES(?,?,?,?,?)";
+  const prepare = [req.body.name, req.body.email, req.body.password, 0, 0];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
     if (err) throw err;
@@ -79,6 +87,7 @@ app.post("/api/users/register", (req, res) => {
         name: newUser.name,
         email: newUser.email,
         isAdmin: newUser.isAdmin,
+        isChef: newUser.isChef,
       });
     else res.status(401).send({ msg: 'Invalid User Data.' });
   })
@@ -87,7 +96,7 @@ app.post("/api/users/register", (req, res) => {
 
 //xu ly create new product
 app.post("/api/products", (req, res) => {
-  var sql = "INSERT INTO products(name,category,image,price,brand,rating,numReviews,countInStock,description) VALUES(?,?,?,?,?,?,?,?)";
+  var sql = "INSERT INTO products(name,category,image,price,brand,rating,numReviews,countInStock,description) VALUES(?,?,?,?,?,?,?,?,?)";
   const prepare = [req.body.name, req.body.category, req.body.image, req.body.price, req.body.brand, 0, 0, req.body.countInStock, req.body.description];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
@@ -200,9 +209,45 @@ app.get("/api/orders", async (req, res) => {
   connection.query(sql, function (err, results) {
     if (err) throw err;
     res.json(results);
+  });
 });
-  
+
+
+//xu ly tai list order cho chef xem
+app.get("/api/chef", async (req, res) => {
+  var sql = "SELECT * FROM orders ORDER BY _id_order ASC";
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    const orders = results.filter(x => x.isDone === 0);
+    res.json(orders);
+  });
 });
+
+//xu ly done cua chef
+app.put("/api/chef", async (req, res) => {
+  var sql = "UPDATE orders SET isDone=? WHERE _id_order=?";
+  const prepare = [1, req.body._id_order];
+  sql = connection.format(sql, prepare);
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    console.log("done thanh cong");
+    res.send(true);
+  });
+})
+
+
+//xu ly taken cua customer
+app.put("/api/customer", async (req, res) => {
+  var sql = "UPDATE orders SET isReceived=? WHERE _id_order=?";
+  const prepare = [1, req.body._id_order];
+  sql = connection.format(sql, prepare);
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    console.log("taken thanh cong");
+    res.send(true);
+  });
+})
+
 
 
 app.listen(5000, () => {

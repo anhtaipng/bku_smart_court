@@ -5,13 +5,13 @@ import { listOrders, } from '../actions/orderActions';
 
 function OrdersScreen(props) {
   const orderList = useSelector(state => state.orderList);
-  const {orders , loading , error } = orderList;
+  const { orders, loading, error } = orderList;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(listOrders());
-  },[dispatch]);
+  }, [dispatch]);
 
   return loading ? <div>Loading...</div> :
     <div className="content content-margined">
@@ -27,7 +27,8 @@ function OrdersScreen(props) {
               <th>DATE</th>
               <th>TOTAL</th>
               <th>USER</th>
-              <th>ACTIONS</th>
+              <th>DETAIL</th>
+              <th>STATUS</th>
             </tr>
           </thead>
           <tbody>
@@ -37,15 +38,16 @@ function OrdersScreen(props) {
               <td>{order.totalPrice}</td>
               <td>{order._id_user}</td>
               <td>
-              <div className="dropdown">
-                                            <a href="#">Detail</a>
-                                            <ul className="dropdown-content">
-                                                <li >
-                                                    {order.orderItems}
-                                                </li>
-                                            </ul>
-                                        </div>
+                <div className="dropdown">
+                  <a href="#">Detail</a>
+                  <ul className="dropdown-content">
+                    <li >
+                      {order.orderItems}
+                    </li>
+                  </ul>
+                </div>
               </td>
+              <td>{order.isDone?order.isReceived?"Done":"Customer doesn't have taken food yet!":"The food is not ready"}</td>
             </tr>))}
           </tbody>
         </table>

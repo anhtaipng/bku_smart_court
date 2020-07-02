@@ -14,6 +14,7 @@ import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OdersScreen';
+import ChefScreen from './screens/ChefScreen';
 function App() {
 
   const userSignin = useSelector(state => state.userSignin);
@@ -59,14 +60,18 @@ function App() {
                   </li>
                 </ul>
               </div>
+              || ''
             }
+            {userInfo && userInfo.isChef && 
+                <Link to="/chef">Chef</Link>
+              || ''}
           </div>
         </header>
         <aside className="sidebar">
           <h3 className="item">Shopping Categories</h3>
           <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-          <a className="item item-btn" href="#">Food</a>
-          <a className="item item-btn" href="#">Drinks</a>
+          <Link to="/category/Food" className="item item-btn">Food</Link>
+          <Link to="/category/Drinks" className="item item-btn">Drinks</Link>
         </aside>
         <main className="main">
           <div className="content">
@@ -80,11 +85,13 @@ function App() {
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/profile" component={ProfileScreen} />
             <Route path="/orders" component={OrdersScreen} />
+            <Route path="/category/:id" component={HomeScreen} />
+            <Route path="/chef" component={ChefScreen} />
           </div>
           <img className="background" src="/images/bg.jpg"></img>
         </main>
         <footer className="footer">
-          4T1S
+          S4T
     </footer>
       </div>
     </BrowserRouter>
