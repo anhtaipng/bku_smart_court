@@ -59,12 +59,6 @@ function CartScreen(props){
                            <h3>
                            • Quantity: {item.qty}
                             </h3>
-                                {/* <select value={item.qty} onChange={(e) => dispatch(addToCart(item.product, e.target.value))}>
-                                    {[...Array(item.countInStock).keys()].map(x => 
-                                        <option key = {x+1} value={x + 1} > {x+ 1}</option>
-                                        )
-                                    }
-                                </select> */}
                                 <div>
                                 <button className="button" type="button" onClick={() => removeFromCartHandler(item.product)}>
                                    Delete

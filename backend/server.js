@@ -87,8 +87,8 @@ app.post("/api/users/register", (req, res) => {
 
 //xu ly create new product
 app.post("/api/products", (req, res) => {
-  var sql = "INSERT INTO products(name,category,image,price,brand,rating,numReviews,countInStock) VALUES(?,?,?,?,?,?,?,?)";
-  const prepare = [req.body.name, req.body.category, req.body.image, req.body.price, req.body.brand, 0, 0, req.body.countInStock];
+  var sql = "INSERT INTO products(name,category,image,price,brand,rating,numReviews,countInStock,description) VALUES(?,?,?,?,?,?,?,?)";
+  const prepare = [req.body.name, req.body.category, req.body.image, req.body.price, req.body.brand, 0, 0, req.body.countInStock, req.body.description];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
     if (err) throw err;
@@ -106,14 +106,16 @@ app.post("/api/products", (req, res) => {
   })
 })
 
+
 //xu ly edit product
 app.put("/api/products/:id", (req, res) => {
   const productId = req.params.id;
-  var sql = "UPDATE products SET name=? , category=? , image=? , price=? , brand=? , countInStock=? WHERE _id = ?"
-  const prepare = [req.body.name, req.body.category, req.body.image, req.body.price, req.body.brand, req.body.countInStock, productId];
+  var sql = "UPDATE products SET name=? , category=? , image=? , price=? , brand=? , countInStock=?, description=? WHERE _id = ?";
+  if (req.body.price < 0 || req.body.countInStock < 0) return res.status(500).send({ message: ' Error in Creating Product.' });
+  const prepare = [req.body.name, req.body.category, req.body.image, req.body.price, req.body.brand, req.body.countInStock, req.body.description, productId];
   connection.query(sql, prepare, function (err, results) {
     if (err) throw err;
-    console.log("Create thanh cong");
+    console.log("Edit thanh cong");
   });
   sql = "SELECT * FROM products";
   connection.query(sql, function (err, results) {
@@ -158,6 +160,19 @@ app.post("/api/orders", async (req, res) => {
     console.log("Create thanh cong");
   });
 
+  //xu ly update coountinstock
+  var i = 0;
+  while (i < req.body.orderItems.length) {
+    sql = "UPDATE products SET countInStock=? WHERE _id=?";
+    const prepare = [req.body.orderItems[i].countInStock - req.body.orderItems[i].qty, req.body.orderItems[i].product];
+    sql = connection.format(sql, prepare);
+    connection.query(sql, function (err, results) {
+      if (err) throw err;
+      console.log("update coountinstock thanh cong");
+    });
+    i++;
+  }
+  //ket thuc update coountinstock
   sql = "SELECT * FROM orders";
   connection.query(sql, function (err, results) {
     if (err) throw err;
@@ -177,6 +192,16 @@ app.get("/api/orders/:id", async (req, res) => {
     if (err) throw err;
     res.json(results);
   });
+});
+
+//xuly tai list orders cho manage xem
+app.get("/api/orders", async (req, res) => {
+  var sql = "SELECT * FROM orders ORDER BY _id_order DESC";
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    res.json(results);
+});
+  
 });
 
 

@@ -92,7 +92,7 @@ function ProfileScreen(props) {
                             </thead>
                             <tbody>
                                 {orders.map(order => <tr key={order._id}>
-                                    <td>{order._id}</td>
+                                    <td>{order._id_order}</td>
                                     <td>{order.date}</td>
                                     <td>{order.totalPrice}</td>
                                     <td>{order.isDone?"Yes":"No"}</td>

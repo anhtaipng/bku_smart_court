@@ -21,8 +21,7 @@ function ProductsScreen(props) {
     const [brand, setBrand] = useState('');
     const [category, setCategory] = useState('');
     const [countInStock, setCountInStock] = useState('');
-    //const [description, setDescription] = useState('');
-    //const [uploading, setUploading] = useState(false);
+    const [description, setDescription] = useState('');
     const productList = useSelector(state => state.productList);
     const { loading, products, error } = productList;
 
@@ -56,7 +55,7 @@ function ProductsScreen(props) {
         setId(product._id);
         setName(product.name);
         setPrice(product.price);
-        //setDescription(product.description);
+        setDescription(product.description);
         setImage(product.image);
         setBrand(product.brand);
         setCategory(product.category);
@@ -73,14 +72,14 @@ function ProductsScreen(props) {
                 brand,
                 category,
                 countInStock,
-                //description,
+                description,
             })
         );
     };
     const deleteHandler = (product) => {
         dispatch(deleteProduct(product._id));
     };
-    return <div>{isadmin && 
+    return <div>{isadmin &&
         <div className="content content-margined">
             <div className="product-header">
                 <h3>Products</h3>
@@ -160,15 +159,15 @@ function ProductsScreen(props) {
                                     onChange={(e) => setCategory(e.target.value)}
                                 ></input>
                             </li>
-                            {/* <li>
-                <label htmlFor="description">Description</label>
-                <textarea
-                  name="description"
-                  value={description}
-                  id="description"
-                  onChange={(e) => setDescription(e.target.value)}
-                ></textarea>
-              </li> */}
+                            <li>
+                                <label htmlFor="description">Description</label>
+                                <textarea
+                                    name="description"
+                                    value={description}
+                                    id="description"
+                                    onChange={(e) => setDescription(e.target.value)}
+                                ></textarea>
+                            </li>
                             <li>
                                 <button type="submit" className="button primary">
                                     {id ? 'Update' : 'Create'}
@@ -197,6 +196,7 @@ function ProductsScreen(props) {
                             <th>Price</th>
                             <th>Category</th>
                             <th>Brand</th>
+                            <th>In Stock</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -211,6 +211,7 @@ function ProductsScreen(props) {
                                         <td>{product.price}</td>
                                         <td>{product.category}</td>
                                         <td>{product.brand}</td>
+                                        <td>{product.countInStock}</td>
                                         <td>
                                             <button className="button" onClick={() => openModal(product)}>
                                                 Edit
