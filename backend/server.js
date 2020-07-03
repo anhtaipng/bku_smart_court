@@ -59,6 +59,7 @@ app.post("/api/users/signin", (req, res) => {
           email: signinUser.email,
           isAdmin: signinUser.isAdmin,
           isChef: signinUser.isChef,
+          isITstaff: signinUser.isITstaff,
         });
       else res.status(401).send({ message: 'Password wrong.' });
     }
@@ -248,7 +249,64 @@ app.put("/api/customer", async (req, res) => {
   });
 })
 
+//xu ly tai list user cho IT staff
+app.get("/api/users", async (req, res) => {
+  var sql = "SELECT * FROM users ORDER BY _id DESC";
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    res.json(results);
+  });
+});
 
+
+//xu ly add manager
+app.put("/api/users/addmanager", async (req, res) => {
+  var sql = "UPDATE users SET isAdmin=? WHERE _id=?";
+  const prepare = [1, req.body._id];
+  sql = connection.format(sql, prepare);
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    console.log("add manager thanh cong");
+    res.send(true);
+  });
+})
+
+//xu ly delete manager
+app.put("/api/users/deletemanager", async (req, res) => {
+  var sql = "UPDATE users SET isAdmin=? WHERE _id=?";
+  const prepare = [0, req.body._id];
+  sql = connection.format(sql, prepare);
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    console.log("delete manager thanh cong");
+    res.send(true);
+  });
+})
+
+//xu ly add chef
+app.put("/api/users/addchef", async (req, res) => {
+  var sql = "UPDATE users SET isChef=? WHERE _id=?";
+  const prepare = [1, req.body._id];
+  sql = connection.format(sql, prepare);
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    console.log("add chef thanh cong");
+    res.send(true);
+  });
+})
+
+
+//xu ly delete chef
+app.put("/api/users/deletechef", async (req, res) => {
+  var sql = "UPDATE users SET isChef=? WHERE _id=?";
+  const prepare = [0, req.body._id];
+  sql = connection.format(sql, prepare);
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    console.log("delete chef thanh cong");
+    res.send(true);
+  });
+})
 
 app.listen(5000, () => {
   console.log("server at port 5000");

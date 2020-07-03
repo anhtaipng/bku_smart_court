@@ -15,6 +15,7 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OdersScreen';
 import ChefScreen from './screens/ChefScreen';
+import ITstaffScreen from './screens/ITstaffScreen';
 function App() {
 
   const userSignin = useSelector(state => state.userSignin);
@@ -56,7 +57,6 @@ function App() {
                   <li>
                     <Link to="/orders">Orders</Link>
                     <Link to="/products">Products</Link>
-
                   </li>
                 </ul>
               </div>
@@ -64,6 +64,9 @@ function App() {
             }
             {userInfo && userInfo.isChef && 
                 <Link to="/chef">Chef</Link>
+              || ''}
+              {userInfo && userInfo.isITstaff && 
+                <Link to="/itstaff">IT Staff</Link>
               || ''}
           </div>
         </header>
@@ -87,8 +90,8 @@ function App() {
             <Route path="/orders" component={OrdersScreen} />
             <Route path="/category/:id" component={HomeScreen} />
             <Route path="/chef" component={ChefScreen} />
+            <Route path="/itstaff" component={ITstaffScreen} />
           </div>
-          <img className="background" src="/images/bg.jpg"></img>
         </main>
         <footer className="footer">
           S4T
