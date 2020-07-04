@@ -47,11 +47,18 @@ function ChefScreen(props) {
                             <td>{order._id_user}</td>
                             <td>
                                 <div className="dropdown">
-                                    <a href="#">Detail</a>
+                                    <a href="#">Order list</a>
                                     <ul className="dropdown-content">
                                         <li >
                                             {order.orderItems}
                                         </li>
+                                    </ul>
+                                </div>
+                                <div></div>
+                                <div className="dropdown">
+                                    <a href="#">Requirement</a>
+                                    <ul className="dropdown-content">
+                                            {order.requirement}
                                     </ul>
                                 </div>
                             </td>

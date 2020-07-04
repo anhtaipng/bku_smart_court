@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createOrder } from '../actions/orderActions';
 function PlaceOrderScreen(props) {
-    
+
     const userSignin = useSelector(state => state.userSignin);
     const { userInfo } = userSignin;
     const _id = userInfo._id;
@@ -17,12 +17,14 @@ function PlaceOrderScreen(props) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
 
+    const [requirement, setRequirement] = useState('');
+
     const dispatch = useDispatch();
 
     const placeOrderHandler = () => {
         // create an order
         dispatch(createOrder({
-            orderItems: cartItems, _id, totalPrice
+            orderItems: cartItems, _id, totalPrice, requirement
         }));
     }
     useEffect(() => {
@@ -37,6 +39,13 @@ function PlaceOrderScreen(props) {
         <div className="placeorder">
             <div className="placeorder-info">
                 <ul className="cart-list-container">
+                    <div>
+                        <h3>Special requirement</h3>
+                        
+                            <input onChange={(e) => setRequirement(e.target.value)}  type="text" style={{height: '20px'}, {width: '920px'}}
+                            placeholder="You can enter your special requirements for the food to chef such as spicy or not spicy, not too salty, low sugar, after how long you come to receive the food">                               
+                            </input>
+                    </div>
                     <li>
                         <h3>
                             Shopping Cart
@@ -76,26 +85,26 @@ function PlaceOrderScreen(props) {
             </div>
 
 
-        </div>
-        <div className="placeorder-action">
-            <ul>
-                <li>
-                    <button className="button primary full-width" onClick={placeOrderHandler} >Place Order</button>
-                </li>
-                <li>
-                    <h3>Order Summary</h3>
-                </li>
-                <li>
-                    <div>Items</div>
-                    <div>${itemsPrice}</div>
-                </li>
-                <li>
-                    <div>Order Total</div>
-                    <div>${totalPrice}</div>
-                </li>
-            </ul>
 
+            <div className="placeorder-action">
+                <ul>
+                    <li>
+                        <h3>Order Summary</h3>
+                    </li>
+                    <li>
+                        <div>Items</div>
+                        <div>${itemsPrice}</div>
+                    </li>
+                    <li>
+                        <div>Order Total</div>
+                        <div>${totalPrice}</div>
+                    </li>
+                    <li>
+                        <button className="button primary" onClick={placeOrderHandler} >Place Order</button>
+                    </li>
+                </ul>
 
+            </div>
 
         </div>
 

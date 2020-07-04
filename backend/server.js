@@ -161,29 +161,35 @@ app.delete("/api/products/:id", (req, res) => {
 });
 
 //xu ly create order
+
+
 app.post("/api/orders", async (req, res) => {
-  var sql = "INSERT INTO orders(_id_user,orderItems,totalPrice,isDone,isReceived) VALUES(?,?,?,?,?)";
+
+    //xu ly update coountinstock
+var i = 0;
+while (i < req.body.orderItems.length) {
+  if (req.body.orderItems[i].countInStock - req.body.orderItems[i].qty < 0) return res.status(500).send({ message: ' Error in Creating Product.' });
+  sql = "UPDATE products SET countInStock=? WHERE _id=?";
+  const prepare = [req.body.orderItems[i].countInStock - req.body.orderItems[i].qty, req.body.orderItems[i].product];
+  sql = connection.format(sql, prepare);
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    console.log("update coountinstock thanh cong");
+  });
+  i++;
+}
+  //ket thuc update coountinstock
+
+  var sql = "INSERT INTO orders(_id_user,orderItems,totalPrice,isDone,isReceived,requirement) VALUES(?,?,?,?,?,?)";
   const itemsDetail = req.body.orderItems.reduce((a, c) => a + "    " + String(c.qty) + c.name, " ");
-  const prepare = [req.body._id, itemsDetail, req.body.totalPrice, 0, 0];
+  const prepare = [req.body._id, itemsDetail, req.body.totalPrice, 0, 0, req.body.requirement];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
     if (err) throw err;
     console.log("Create thanh cong");
   });
 
-  //xu ly update coountinstock
-  var i = 0;
-  while (i < req.body.orderItems.length) {
-    sql = "UPDATE products SET countInStock=? WHERE _id=?";
-    const prepare = [req.body.orderItems[i].countInStock - req.body.orderItems[i].qty, req.body.orderItems[i].product];
-    sql = connection.format(sql, prepare);
-    connection.query(sql, function (err, results) {
-      if (err) throw err;
-      console.log("update coountinstock thanh cong");
-    });
-    i++;
-  }
-  //ket thuc update coountinstock
+
   sql = "SELECT * FROM orders";
   connection.query(sql, function (err, results) {
     if (err) throw err;

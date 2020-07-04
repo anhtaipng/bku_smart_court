@@ -114,7 +114,7 @@ function ProfileScreen(props) {
                                             </ul>
                                         </div>
                                     </td>
-                                    <td>{order.isReceived?"":<button className="button" onClick={() => takenHandler(order._id_order)}>I had it!</button>}</td>
+                                    <td>{order.isReceived?"":<button className="button" onClick={() => takenHandler(order._id_order)} disabled={order.isDone===0}>I had it!</button>}</td>
                                 </tr>)}
                             </tbody>
                         </table>
