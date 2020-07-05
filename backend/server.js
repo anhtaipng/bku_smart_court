@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'bku',
+  user: 'user_Test',
   password: '123456',
   database: 'food_court'
 });
@@ -72,6 +72,7 @@ app.post("/api/users/signin", (req, res) => {
 
 //xu ly register
 app.post("/api/users/register", (req, res) => {
+
   var sql = "INSERT INTO users(name,email,password,isManager, isAdmin,isChef, isITstaff, vendor) VALUES(?,?,?,?,?,?,?,?)";
   const prepare = [req.body.name, req.body.email, req.body.password, 0, 0, 0, 0, ''];
   sql = connection.format(sql, prepare);
@@ -93,6 +94,8 @@ app.post("/api/users/register", (req, res) => {
         isAdmin: newUser.isAdmin,
         isChef: newUser.isChef,
         isITstaff: newUser.isITstaff,
+        isManager: newUser.isManager,
+        isVendor: newUser.isVendor
       });
     else res.status(401).send({ msg: 'Invalid User Data.' });
   })

@@ -522,3 +522,19 @@ tbody > tr:nth-child(odd) {
 .categories a:hover {
   background-color: #c0c0c0;
 }
+
+
+/*---------------------------------------------------------------------------------------------------------*/
+
+
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/images/bg.jpg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}

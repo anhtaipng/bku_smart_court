@@ -1,0 +1,43 @@
+* cbf5ee9 : fix register
+* be1805d : done it staff
+* 3d60c68 : done chef feature
+* 8a42f6f : done manage orders
+* c9cd620 : chinh css
+* 5fd63e2 : done checkout process
+* 24fa286 : add Payment screen, payment
+* 23dd718 : change frontend
+*   e821e0c : Merge branch 'master' of https://github.com/anhtaipng/bku_smart_court
+|\  
+| * 651df41 : done feature manage products (create, edit, delete)
+| * 7968a4f : update icon cart on top(number of items)
+* | 1bb4bcc : delete data.js
+|\| 
+| * c46ebd8 : done sign in and register
+| * 32e156c : connect mysql(only for products)
+* | 577994f : add button back to homepage
+|/  
+*   c330927 : Merge branch 'master' of https://github.com/anhtaipng/bku_smart_court
+|\  
+| * 87d0116 : chỉnh opacity background
+* | f5a547b : zoom product
+|/  
+* a8d4291 : sửa background
+* 00aa68a : sửa sidebar
+* ea26afe : change frontend
+*   ce29059 : Merge branch 'master' of https://github.com/anhtaipng/bku_smart_court
+|\  
+| * 35acbe6 : add sign in box
+* | 8579138 : change bg
+|/  
+* 41118a4 : [CART]: add, remove, checkout to accessed,...
+* ce34374 : fix loi footer
+* 015e13e : add cart, changed frontend
+* 1bab69c : create node server(port 5000), create redux, render product
+* 17a2cbf : change index.css
+*   8a0181c : Merge pull request #1 from anhtaipng/minhtien
+|\  
+| * 07286ab : commit 2
+| * dffdae5 : first commit
+|/  
+* 7a326a3 :  create react-app done
+* dd24f3b : Initial commit
