@@ -70,8 +70,8 @@ app.post("/api/users/signin", (req, res) => {
 
 //xu ly register
 app.post("/api/users/register", (req, res) => {
-  var sql = "INSERT INTO users(name,email,password,isAdmin,isChef, isITstaff) VALUES(?,?,?,?,?,?)";
-  const prepare = [req.body.name, req.body.email, req.body.password, 0, 0, 0];
+  var sql = "INSERT INTO users(name,email,password,isAdmin,isChef, isITstaff, isManager, vendor) VALUES(?,?,?,?,?,?,?,?)";
+  const prepare = [req.body.name, req.body.email, req.body.password, 0, 0, 0,0,0];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
     if (err) throw err;
@@ -90,6 +90,8 @@ app.post("/api/users/register", (req, res) => {
         isAdmin: newUser.isAdmin,
         isChef: newUser.isChef,
         isITstaff: newUser.isITstaff,
+        isManager: newUser.isManager,
+        isVendor: newUser.isVendor
       });
     else res.status(401).send({ msg: 'Invalid User Data.' });
   })

@@ -1,0 +1,210 @@
+commit cbf5ee947b26a2f19f55ab2ba4f9840799045f17
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Fri Jul 3 15:58:18 2020 +0700
+
+    fix register
+
+commit be1805dc019394bc06cb516be5bcb80e5fe118b9
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Fri Jul 3 11:39:20 2020 +0700
+
+    done it staff
+
+commit 3d60c6833cdc1141364e2d5790d811e2d243195a
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Fri Jul 3 02:11:11 2020 +0700
+
+    done chef feature
+
+commit 8a42f6fb90c7da0401f5b9bed71e5e05c5ed3854
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Thu Jul 2 22:05:22 2020 +0700
+
+    done manage orders
+
+commit c9cd6201df756db05408ec2760f9ec32cbc18975
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Wed Jul 1 23:30:20 2020 +0700
+
+    chinh css
+
+commit 5fd63e2e166f799a66eefafeee357b8926e6dbb4
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Wed Jul 1 22:38:57 2020 +0700
+
+    done checkout process
+
+commit 24fa2860b1414691fb91e34547362ef06ac18711
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 30 17:09:54 2020 +0700
+
+    add Payment screen, payment
+
+commit 23dd718d161bfaf603529745f84939e56a8bd11e
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 30 15:38:40 2020 +0700
+
+    change frontend
+
+commit e821e0c294878fc18c33cfb22c0b7775c65fa842
+Merge: 1bb4bcc 651df41
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 30 10:44:06 2020 +0700
+
+    Merge branch 'master' of https://github.com/anhtaipng/bku_smart_court
+
+commit 651df41f751efc7d0853b9b8de8c349413c00508
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Mon Jun 29 22:52:51 2020 +0700
+
+    done feature manage products (create, edit, delete)
+
+commit 7968a4fc8d138942efd52d6085c082d351ef1c4d
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Sun Jun 28 23:07:04 2020 +0700
+
+    update icon cart on top(number of items)
+
+commit 1bb4bcc953ac0387e67be839ef2c310bf2acbf1e
+Merge: 577994f c46ebd8
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Sun Jun 28 15:27:33 2020 +0700
+
+    delete data.js
+
+commit 577994f9be754890f922b2f33bd72167f1ea3b02
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Sun Jun 28 15:25:25 2020 +0700
+
+    add button back to homepage
+
+commit c46ebd83137e01e10a7c38c06b9c62fe8e99b360
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Sun Jun 28 15:16:11 2020 +0700
+
+    done sign in and register
+
+commit 32e156c9427682a3bb48023ff7bebc72e49d02b3
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Sat Jun 27 13:17:11 2020 +0700
+
+    connect mysql(only for products)
+
+commit c330927a3f19717ce6691bb29be0275ea8b71d5c
+Merge: f5a547b 87d0116
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 23 23:57:30 2020 +0700
+
+    Merge branch 'master' of https://github.com/anhtaipng/bku_smart_court
+
+commit f5a547b4e8e1c7e13aed54dc92e4cd0c7da9505d
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 23 23:54:43 2020 +0700
+
+    zoom product
+
+commit 87d0116722f368cfcb398e5625d616ed5c6db180
+Author: Tien <tien.tm@pillez.tech>
+Date:   Tue Jun 23 23:37:45 2020 +0700
+
+    chỉnh opacity background
+
+commit a8d4291cb2e86da347588b3d08449af81f92976e
+Author: Tien <tien.tm@pillez.tech>
+Date:   Tue Jun 23 23:25:44 2020 +0700
+
+    sửa background
+
+commit 00aa68a542327e82695d0bdf358c52a3151d16c2
+Author: Tien <tien.tm@pillez.tech>
+Date:   Tue Jun 23 22:13:25 2020 +0700
+
+    sửa sidebar
+
+commit ea26afee18139b95ea6ae7325dc51ad10bc47448
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 23 21:59:36 2020 +0700
+
+    change frontend
+
+commit ce290598a5aed953eab919e2427473b967e984a3
+Merge: 8579138 35acbe6
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 23 21:47:34 2020 +0700
+
+    Merge branch 'master' of https://github.com/anhtaipng/bku_smart_court
+
+commit 85791381d98bde6dc6646a318b96713a6e48328e
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 23 21:46:59 2020 +0700
+
+    change bg
+
+commit 35acbe68ce53bded86baa6146effa4c2b4ecdc16
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Tue Jun 23 15:49:18 2020 +0700
+
+    add sign in box
+
+commit 41118a41e8b2e30a81d71f6d9e8a3075e0a4d02d
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 23 10:34:27 2020 +0700
+
+    [CART]: add, remove, checkout to accessed,...
+
+commit ce343740abe8d50f0c7ebe11ca6e8791af8146cf
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Tue Jun 23 09:33:37 2020 +0700
+
+    fix loi footer
+
+commit 015e13e6641aa5fdf05028792ea443077fb554b2
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 23 08:34:20 2020 +0700
+
+    add cart, changed frontend
+
+commit 1bab69cb4d23f180533b66a04a3d16e1f0b234d7
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Tue Jun 23 01:21:00 2020 +0700
+
+    create node server(port 5000), create redux, render product
+
+commit 17a2cbf1a16b69367ac790efc56d3e589f6e0e8d
+Author: duythin_bmt <duythin1233@gmail.com>
+Date:   Tue Jun 23 00:17:40 2020 +0700
+
+    change index.css
+
+commit 8a0181c118a724a1d8726f3c574502e1d4ff6df8
+Merge: 7a326a3 07286ab
+Author: minhtienonly <66961802+minhtienonly@users.noreply.github.com>
+Date:   Mon Jun 22 23:39:49 2020 +0700
+
+    Merge pull request #1 from anhtaipng/minhtien
+    
+    Minhtien
+
+commit 07286abbd9df8f5d4faf38305b7862d6371ab576
+Author: Tien <tien.tm@pillez.tech>
+Date:   Sun Jun 21 17:57:32 2020 +0700
+
+    commit 2
+
+commit dffdae551505ddad41c451abf7916c5cfda534cb
+Author: Tien <tien.tm@pillez.tech>
+Date:   Sat Jun 20 17:15:18 2020 +0700
+
+    first commit
+
+commit 7a326a3d72753b9989b5ee6d6727555bcd9b0085
+Author: Tai Pham <anhtaipng@gmail.com>
+Date:   Sun Jun 14 19:57:08 2020 +0700
+
+     create react-app done
+
+commit dd24f3b5f3e44a10c20e5d2fc2b5a71894c44d7c
+Author: taipham7 <45941090+anhtaipng@users.noreply.github.com>
+Date:   Sat Jun 13 13:42:58 2020 +0700
+
+    Initial commit

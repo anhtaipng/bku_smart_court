@@ -20,8 +20,95 @@ function HomeScreen(props) {
         }
     }, [])
 
-    return <div>
-        Welcome to BKU Smart Food Court, please chosse the vendor in the sidebar on top left!
+    return <html>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"/>
+    <style>
+    
+    </style>
+    <body>
+    
+
+    <header class="bgimg w3-display-container w3-grayscale-min" id="home">
+      <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+        <span class="w3-tag">Open from 6am to 5pm</span>
+      </div>
+      <div class="w3-display-middle w3-center">
+        <span class="w3-text-white"  style={{fontSize: '100px', color: '#0066cc'}}></span>
+      </div>
+      <div class="w3-display-bottomright w3-center w3-padding-large">
+        <span class="w3-text-white" class="w3-tag" >Bach Khoa Campus, 268 Ly Thuong Kiet, HCMC</span>
+      </div>
+    </header>
+    
+
+    <div class="w3-sand w3-grayscale w3-large">
+    
+
+    <div class="w3-container" id="about">
+      <div class="w3-content" style={{maxWidth:'700px'}}>
+        <h5 class="w3-center w3-padding-64" ><span class="w3-tag w3-wide" style={{fontSize : '40px'}}>BACH KHOA SMART FOOD COURT</span></h5>
+       
+        <p>We have everything you need to full up your stomach</p>
+        <div class="w3-panel w3-leftbar w3-light-grey">
+          <p><i>
+“One cannot think well, love well, sleep well, if one has not dined well.”</i></p>
+          <p>Team Dev S4T copied</p>
+        </div>
+        <img src="https://www.hcmut.edu.vn/upload/ctctsv1/images/2018%20-%202019/ct4.jpg"  style={{width : '100%', maxWidth : '1000px'}} class="w3-margin-top"/>
+        <p><strong>Opening hours:</strong> everyday from 6am to 5pm.</p>
+        <p><strong>Address:</strong> Bach Khoa Campus, 268 Ly Thuong Kiet Street, HCMC, Vietnam</p>
+      </div>
     </div>
+    
+   
+    <div class="w3-container" id="menu">
+      <div class="w3-content" style={{maxWidth : '700px'}}>
+     
+        <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide" style={{fontSize: '30px'}}>THE MENU</span></h5>
+      
+        <div class="w3-row w3-center w3-card w3-padding">
+          <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
+            <div class="w3-col s6 tablink"style={{fontSize: '30px'}}>Eat</div>
+          </a>
+          <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+            <div class="w3-col s6 tablink" style={{fontSize: '30px'}}>Drink</div>
+          </a>
+        </div>
+    
+        <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
+
+        </div>
+    
+        <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
+          
+        </div>  
+        <img src="https://images.all-free-download.com/images/graphiclarge/fast_food_menu_template_contrast_design_on_dark_6826740.jpg" style={{width: '100%', maxWidth : '1000px', marginTop : '32px'}}/>
+      </div>
+    </div>
+    
+
+    <div class="w3-container" id="where" style={{paddingBottom: '32px'}}>
+      <div class="w3-content" style={{maxWidth :'700px'}}>
+        <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide" style={{fontSize: '30px'}}>WHERE TO FIND US</span></h5>
+        <p>Find us at some address at some place.</p>
+        <img src="./images/map.png" class="w3-image" style={{width : '100%'}}/>
+        
+      </div>
+    </div>
+    
+
+    </div>
+    
+    
+    
+    
+    
+    </body>
+    </html>
+  
 }
 export default HomeScreen;
