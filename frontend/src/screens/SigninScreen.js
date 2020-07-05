@@ -20,15 +20,6 @@ function SigninScreen(props) {
     };
   }, [userInfo]);
 
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     props.history.push("/");
-  //   }
-  //   return () => {
-  //     //
-  //   };
-  // }, [userInfo]);
-
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(signin(email, password));

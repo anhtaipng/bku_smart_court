@@ -12,6 +12,8 @@ function ProductsScreen(props) {
     const userSignin = useSelector(state => state.userSignin);
     const { userInfo } = userSignin;
     const isadmin = userInfo.isAdmin;
+    const vendor = userInfo.vendor;
+    
 
     const [modalVisible, setModalVisible] = useState(false);
     const [id, setId] = useState('');
@@ -44,11 +46,11 @@ function ProductsScreen(props) {
         if (successSave) {
             setModalVisible(false);
         }
-        dispatch(listProducts());
+        dispatch(listProducts(vendor));
         return () => {
             //
         };
-    }, [successSave, successDelete]);
+    }, [successSave, successDelete, vendor]);
 
     const openModal = (product) => {
         setModalVisible(true);
@@ -73,6 +75,7 @@ function ProductsScreen(props) {
                 category,
                 countInStock,
                 description,
+                vendor
             })
         );
     };

@@ -19,6 +19,7 @@ import OrdersScreen from './screens/OdersScreen';
 import ChefScreen from './screens/ChefScreen';
 import ITstaffScreen from './screens/ITstaffScreen';
 import VendorScreen from './screens/VendorScreen';
+import ManagerScreen from './screens/ManagerScreen';
 
 function App() {
 
@@ -61,6 +62,9 @@ function App() {
               userInfo ? <Link to="/profile" >{userInfo.name}</Link> :
                 <Link to="/signin">Sign In</Link>
             }
+            {userInfo && userInfo.isManager &&
+              <Link to="/manager">Manager</Link>
+              || ''}
             {userInfo && userInfo.isAdmin &&
               <div className="dropdown">
                 <a href="#">Vendor Owner</a>
@@ -100,13 +104,14 @@ function App() {
             <Route path="/signin" component={SigninScreen} />
             <Route path="/register" component={RegisterScreen} />
             <Route exact path="/" component={HomeScreen} />
-            <Route path="/products" component={ProductsScreen} />
+            <Route path="/products/" component={ProductsScreen} />
             <Route path="/payment" component={PaymentScreen} />
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/profile" component={ProfileScreen} />
             <Route path="/orders" component={OrdersScreen} />
             <Route path="/vendor/:id" component={VendorScreen} />
             <Route path="/chef" component={ChefScreen} />
+            <Route path="/manager" component={ManagerScreen} />
             <Route path="/itstaff" component={ITstaffScreen} />
           </div>
         </main>
