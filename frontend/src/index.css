@@ -166,6 +166,14 @@ a:hover{
   transform: translateX(0);
 }
 
+.sidebar ul{
+  list-style-type: none;
+}
+
+.sidebar ul li{
+  text-indent: 0%;
+}
+
 .sidebar-close-button{
   border-radius: 50%;
   border: .1rem #000000 solid;
@@ -186,6 +194,9 @@ a:hover{
 .item-btn{
   width:100%;text-align:left;padding:10px 16px;
 }
+
+
+
 .item-btn:hover{
   background-color:rgb(73, 73, 73)!important
 }

@@ -20,15 +20,15 @@ connection.connect(function (err) {
 
 //tai data cho home screen
 app.get("/api/products", (req, res) => {
-  const category = req.query.category ? req.query.category : '';
+  const vendor = req.query.vendor ? req.query.vendor : '';
   var sql;
   sql = "SELECT * FROM products";
   connection.query(sql, function (err, results) {
     if (err) throw err;
-    if (category == '')
+    if (vendor == '')
       res.json(results);
     else {
-      const products = results.filter(x => x.category === category);
+      const products = results.filter(x => x.vendor === vendor);
       res.json(products);
     }
   });
@@ -165,19 +165,19 @@ app.delete("/api/products/:id", (req, res) => {
 
 app.post("/api/orders", async (req, res) => {
 
-    //xu ly update coountinstock
-var i = 0;
-while (i < req.body.orderItems.length) {
-  if (req.body.orderItems[i].countInStock - req.body.orderItems[i].qty < 0) return res.status(500).send({ message: ' Error in Creating Product.' });
-  sql = "UPDATE products SET countInStock=? WHERE _id=?";
-  const prepare = [req.body.orderItems[i].countInStock - req.body.orderItems[i].qty, req.body.orderItems[i].product];
-  sql = connection.format(sql, prepare);
-  connection.query(sql, function (err, results) {
-    if (err) throw err;
-    console.log("update coountinstock thanh cong");
-  });
-  i++;
-}
+  //xu ly update coountinstock
+  var i = 0;
+  while (i < req.body.orderItems.length) {
+    if (req.body.orderItems[i].countInStock - req.body.orderItems[i].qty < 0) return res.status(500).send({ message: ' Error in Creating Product.' });
+    sql = "UPDATE products SET countInStock=? WHERE _id=?";
+    const prepare = [req.body.orderItems[i].countInStock - req.body.orderItems[i].qty, req.body.orderItems[i].product];
+    sql = connection.format(sql, prepare);
+    connection.query(sql, function (err, results) {
+      if (err) throw err;
+      console.log("update coountinstock thanh cong");
+    });
+    i++;
+  }
   //ket thuc update coountinstock
 
   var sql = "INSERT INTO orders(_id_user,orderItems,totalPrice,isDone,isReceived,requirement) VALUES(?,?,?,?,?,?)";
@@ -312,6 +312,16 @@ app.put("/api/users/deletechef", async (req, res) => {
     if (err) throw err;
     console.log("delete chef thanh cong");
     res.send(true);
+  });
+})
+
+
+//xu ly hien sidebar vendors
+app.get("/api/vendors", async (req, res) => {
+  var sql = "SELECT * FROM vendors";
+  connection.query(sql, function (err, results) {
+    if (err) throw err;
+    res.send(results);
   });
 })
 

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import Cookie from 'js-cookie';
 
-import { useSelector, useDispatch } from 'react-redux';
+
+import { useSelector, useDispatch,  } from 'react-redux';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -16,6 +18,8 @@ import ProfileScreen from './screens/ProfileScreen';
 import OrdersScreen from './screens/OdersScreen';
 import ChefScreen from './screens/ChefScreen';
 import ITstaffScreen from './screens/ITstaffScreen';
+import VendorScreen from './screens/VendorScreen';
+
 function App() {
 
   const userSignin = useSelector(state => state.userSignin);
@@ -24,7 +28,14 @@ function App() {
   const cart = useSelector(state => state.cart);
   const { cartItems } = cart;
 
-  const openMenu = () => {
+  const vendorList = useSelector(state => state.vendorList);
+  const { vendors, loading, error } = vendorList;
+
+  const selectVendorHandler = (vendor_name) =>{
+    Cookie.set("vendor_name", vendor_name);
+  }
+
+  const openMenu = async () => {
     document.querySelector(".sidebar").classList.add("open");
   }
   const closeMenu = () => {
@@ -50,9 +61,9 @@ function App() {
               userInfo ? <Link to="/profile" >{userInfo.name}</Link> :
                 <Link to="/signin">Sign In</Link>
             }
-            {userInfo && userInfo.isAdmin && 
+            {userInfo && userInfo.isAdmin &&
               <div className="dropdown">
-                <a href="#">Manager</a>
+                <a href="#">Vendor Owner</a>
                 <ul className="dropdown-content">
                   <li>
                     <Link to="/orders">Orders</Link>
@@ -62,19 +73,25 @@ function App() {
               </div>
               || ''
             }
-            {userInfo && userInfo.isChef && 
-                <Link to="/chef">Chef</Link>
+            {userInfo && userInfo.isChef &&
+              <Link to="/chef">Chef</Link>
               || ''}
-              {userInfo && userInfo.isITstaff && 
-                <Link to="/itstaff">IT Staff</Link>
+            {userInfo && userInfo.isITstaff &&
+              <Link to="/itstaff">IT Staff</Link>
               || ''}
           </div>
         </header>
         <aside className="sidebar">
-          <h3 className="item">Shopping Categories</h3>
+          <h3 className="item">Vendors</h3>
           <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-          <Link to="/category/Food" className="item item-btn">Food</Link>
-          <Link to="/category/Drinks" className="item item-btn">Drinks</Link>
+          {loading ? (<div>...LOADING...</div>) :(<ul>
+              {vendors.map(vendor =>
+                <li key={vendor._id}>
+                  <Link to={"/vendor/"+vendor.name} onClick={() => selectVendorHandler(vendor.name)} className="item item-btn">{vendor.name}</Link>
+                </li>
+              )}
+            </ul>)
+          }
         </aside>
         <main className="main">
           <div className="content">
@@ -88,7 +105,7 @@ function App() {
             <Route path="/placeorder" component={PlaceOrderScreen} />
             <Route path="/profile" component={ProfileScreen} />
             <Route path="/orders" component={OrdersScreen} />
-            <Route path="/category/:id" component={HomeScreen} />
+            <Route path="/vendor/:id" component={VendorScreen} />
             <Route path="/chef" component={ChefScreen} />
             <Route path="/itstaff" component={ITstaffScreen} />
           </div>
