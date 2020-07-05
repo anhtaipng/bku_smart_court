@@ -7,6 +7,7 @@ import axios from 'axios';
 function ManagerScreen(props) {
     const userList = useSelector(state => state.userList);
     const { users, loading, error } = userList;
+    const [vendor,setVendor] = useState('');
 
     const dispatch = useDispatch();
 
@@ -26,12 +27,12 @@ function ManagerScreen(props) {
     }
 
     const addManagerHandler = (_id) =>{
-        axios.put("/api/users/addmanager", {_id});
+        axios.put("/api/users/addmanager", {_id, vendor});
         window.location.reload();
     }
 
     const addChefHandler = (_id) =>{
-        axios.put("/api/users/addchef", {_id});
+        axios.put("/api/users/addchef", {_id, vendor});
         window.location.reload();
     }
 
@@ -59,8 +60,10 @@ function ManagerScreen(props) {
                             <td>{user._id}</td>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
-                            <td>{user.isAdmin?"Yes":"No"}</td>
-                            <td>{user.isChef?"Yes":"No"}</td>
+                            <td>{user.isAdmin?("Yes: "+ user.vendor):<input placeholder="Enter vendor you want to add this user" size = "27" 
+                            onChange={(e) => setVendor(e.target.value)}></input>}</td>
+                            <td>{user.isChef?("Yes: "+ user.vendor):<input placeholder="Enter vendor you want to add this user" size = "27"
+                            onChange={(e) => setVendor(e.target.value)}></input>}</td>
                             <td>{(user.isAdmin && user.isChef) ?
                                 <div><button className="button" onClick={() => deleteManagerHandler(user._id)}>deleteManager</button>
                                     <button className="button" onClick={() => deleteChefHandler(user._id)}>deleteChef</button></div>
@@ -68,7 +71,7 @@ function ManagerScreen(props) {
                                     <div><button className="button" onClick={() => deleteManagerHandler(user._id)}>deleteManager</button>
                                         <button className="button" onClick={() => addChefHandler(user._id)}>addChef</button></div>
                                     : (!user.isAdmin && user.isChef) ?
-                                    <div><button className="button" onClick={() => addManagerHandler(user._id)}>addManager</button>
+                                    <div><button className="button" onClick={() => addManagerHandler(user._id)}>addManager</button>  
                                         <button className="button" onClick={() => deleteChefHandler(user._id)}>deleteChef</button></div>
                                         :<div><button className="button" onClick={() => addManagerHandler(user._id)}>addManager</button>
                                         <button className="button" onClick={() => addChefHandler(user._id)}>addChef</button></div>

@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'user_Test',
+  user: 'bku',
   password: '123456',
   database: 'food_court'
 });
@@ -185,10 +185,9 @@ app.post("/api/orders", async (req, res) => {
     i++;
   }
   //ket thuc update coountinstock
-
-  var sql = "INSERT INTO orders(_id_user,orderItems,totalPrice,isDone,isReceived,requirement) VALUES(?,?,?,?,?,?)";
+  var sql = "INSERT INTO orders(_id_user,orderItems,totalPrice,isDone,isReceived,requirement, vendor) VALUES(?,?,?,?,?,?,?)";
   const itemsDetail = req.body.orderItems.reduce((a, c) => a + "    " + String(c.qty) + c.name, " ");
-  const prepare = [req.body._id, itemsDetail, req.body.totalPrice, 0, 0, req.body.requirement];
+  const prepare = [req.body._id, itemsDetail, req.body.totalPrice, 0, 0, req.body.requirement, req.body.vendor];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
     if (err) throw err;
@@ -217,22 +216,26 @@ app.get("/api/orders/:id", async (req, res) => {
   });
 });
 
-//xuly tai list orders cho manage xem
-app.get("/api/orders", async (req, res) => {
+//xuly tai list orders cho vendor owner xem
+app.get("/api/owner/:id", async (req, res) => {
+  const vendor = req.params.id;
   var sql = "SELECT * FROM orders ORDER BY _id_order DESC";
   connection.query(sql, function (err, results) {
     if (err) throw err;
+    const orders = results.filter(x => (x.vendor === vendor));
     res.json(results);
   });
 });
 
 
+
 //xu ly tai list order cho chef xem
-app.get("/api/chef", async (req, res) => {
+app.get("/api/chef/:id", async (req, res) => {
+  const vendor = req.params.id;
   var sql = "SELECT * FROM orders ORDER BY _id_order ASC";
   connection.query(sql, function (err, results) {
     if (err) throw err;
-    const orders = results.filter(x => x.isDone === 0);
+    const orders = results.filter(x => (x.isDone === 0 && x.vendor === vendor));
     res.json(orders);
   });
 });
@@ -274,8 +277,8 @@ app.get("/api/users", async (req, res) => {
 
 //xu ly add manager
 app.put("/api/users/addmanager", async (req, res) => {
-  var sql = "UPDATE users SET isAdmin=? WHERE _id=?";
-  const prepare = [1, req.body._id];
+  var sql = "UPDATE users SET isAdmin=? ,vendor=? WHERE _id=?";
+  const prepare = [1, req.body.vendor, req.body._id];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
     if (err) throw err;
@@ -286,8 +289,8 @@ app.put("/api/users/addmanager", async (req, res) => {
 
 //xu ly delete manager
 app.put("/api/users/deletemanager", async (req, res) => {
-  var sql = "UPDATE users SET isAdmin=? WHERE _id=?";
-  const prepare = [0, req.body._id];
+  var sql = "UPDATE users SET isAdmin=?, vendor=? WHERE _id=?";
+  const prepare = [0,'', req.body._id];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
     if (err) throw err;
@@ -296,10 +299,11 @@ app.put("/api/users/deletemanager", async (req, res) => {
   });
 })
 
+
 //xu ly add chef
 app.put("/api/users/addchef", async (req, res) => {
-  var sql = "UPDATE users SET isChef=? WHERE _id=?";
-  const prepare = [1, req.body._id];
+  var sql = "UPDATE users SET isChef=? ,vendor=? WHERE _id=?";
+  const prepare = [1, req.body.vendor, req.body._id];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
     if (err) throw err;
@@ -311,8 +315,8 @@ app.put("/api/users/addchef", async (req, res) => {
 
 //xu ly delete chef
 app.put("/api/users/deletechef", async (req, res) => {
-  var sql = "UPDATE users SET isChef=? WHERE _id=?";
-  const prepare = [0, req.body._id];
+  var sql = "UPDATE users SET isChef=?, vendor=? WHERE _id=?";
+  const prepare = [0,'', req.body._id];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
     if (err) throw err;

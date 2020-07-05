@@ -16,6 +16,7 @@ function PlaceOrderScreen(props) {
 
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
+    const vendor = cartItems[0].vendor;
 
     const [requirement, setRequirement] = useState('');
 
@@ -24,7 +25,7 @@ function PlaceOrderScreen(props) {
     const placeOrderHandler = () => {
         // create an order
         dispatch(createOrder({
-            orderItems: cartItems, _id, totalPrice, requirement
+            orderItems: cartItems, _id, totalPrice, requirement, vendor
         }));
     }
     useEffect(() => {

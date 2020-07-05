@@ -11,10 +11,14 @@ function ChefScreen(props) {
     const orderList = useSelector(state => state.orderList);
     const { orders, loading, error } = orderList;
 
+    const userSignin = useSelector(state => state.userSignin);
+    const { userInfo } = userSignin;
+    const vendor = userInfo.vendor;
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(listChefOrders());
+        dispatch(listChefOrders(vendor));
     }, [dispatch]);
 
     const doneHandler = (_id_order) =>{

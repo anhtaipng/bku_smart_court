@@ -27,24 +27,24 @@ const listMyOrders = (userID) => async (dispatch, getState) => {
   }
 }
 
-const listOrders = () => async (dispatch, getState) => {
+const listOrders = (vendor) => async (dispatch, getState) => {
 
   try {
     dispatch({ type: ORDER_LIST_REQUEST });
     const { userSignin: { userInfo } } = getState();
-    const { data } = await Axios.get("/api/orders");
+    const { data } = await Axios.get("/api/owner/" + vendor);
     dispatch({ type: ORDER_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: ORDER_LIST_FAIL, payload: error.message });
   }
 }
 
-const listChefOrders = () => async (dispatch, getState) => {
+const listChefOrders = (vendor) => async (dispatch, getState) => {
 
   try {
     dispatch({ type: ORDER_LIST_REQUEST });
     const { userSignin: { userInfo } } = getState();
-    const { data } = await Axios.get("/api/chef");
+    const { data } = await Axios.get("/api/chef/" + vendor);
     dispatch({ type: ORDER_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: ORDER_LIST_FAIL, payload: error.message });
