@@ -216,6 +216,8 @@ a:hover{
 }
 .details-image {
   flex: 2 1 10rem;
+  max-width: 500px;
+  max-height: 500px;
 }
 .details-image img{
   border-radius: 5%;

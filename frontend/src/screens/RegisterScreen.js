@@ -40,19 +40,19 @@ function RegisterScreen(props) {
                     <label htmlFor="name">
                         Name
           </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
+                    <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)} placeholder="John">
                     </input>
                 </li>
                 <li>
                     <label htmlFor="email">
                         Email
           </label>
-                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder="user@gmail.com">
                     </input>
                 </li>
                 <li>
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
+                    <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} placeholder="******">
                     </input>
                 </li>
                 <li>

@@ -102,9 +102,10 @@ app.post("/api/users/register", (req, res) => {
 
 });
 
+
 //xu ly create new product
 app.post("/api/products", (req, res) => {
-  var sql = "INSERT INTO products(name,category,image,price,brand,rating,numReviews,countInStock,description, vendor) VALUES(?,?,?,?,?,?,?,?,?,?)";
+  var sql = "INSERT INTO products(name,category,image,price,brand,rating,numReviews,countInStock, description, vendor) VALUES(?,?,?,?,?,?,?,?,?,?)";
   const prepare = [req.body.name, req.body.category, req.body.image, req.body.price, req.body.brand, 0, 0, req.body.countInStock, req.body.description, req.body.vendor];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
