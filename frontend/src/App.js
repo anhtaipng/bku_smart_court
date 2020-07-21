@@ -35,7 +35,6 @@ function App() {
   const selectVendorHandler = (vendor_name) =>{
     Cookie.set("vendor_name", vendor_name);
   }
-
   const openMenu = async () => {
     document.querySelector(".sidebar").classList.add("open");
   }
@@ -48,9 +47,9 @@ function App() {
       <div className="grid-container">
         <header className="header">
           <div className="brand">
-            <button onClick={openMenu}>
+            <a onClick={openMenu}>
               &#9776;
-             </button>
+             </a>
             <Link to="/">BKU Food Court</Link>
           </div>
           <div className="header-links">
@@ -87,14 +86,14 @@ function App() {
         </header>
         <aside className="sidebar">
           <h3 className="item">Vendors</h3>
-          <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-          {loading ? (<div>...LOADING...</div>) :(<ul>
+          <button className="sidebar-close-button" onClick={closeMenu}>X</button>
+          {loading ? (<div>...LOADING...</div>) :(<div>
               {vendors.map(vendor =>
-                <li key={vendor._id}>
+                <div key={vendor._id}>
                   <Link to={"/vendor/"+vendor.name} onClick={() => selectVendorHandler(vendor.name)} className="item item-btn">{vendor.name}</Link>
-                </li>
+                </div>
               )}
-            </ul>)
+            </div>)
           }
         </aside>
         <main className="main">

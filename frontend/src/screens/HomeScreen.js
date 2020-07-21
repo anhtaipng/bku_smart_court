@@ -20,29 +20,19 @@ function HomeScreen(props) {
         }
     }, [])
 
-    return <html>
-    <title>W3.CSS Template</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"/>
-    <style>
-    
-    </style>
-    <body>
-    
-
-    <header class="bgimg w3-display-container w3-grayscale-min" id="home">
-      <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
-        <span class="w3-tag">Open from 6am to 5pm</span>
+    return <div >
+    <img className="bgimg" src="../images/bg.jpg"></img>
+    <div className="w3-display-container w3-grayscale-min">
+      <div className="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+        <span className="w3-tag"><big>Open from 6am to 5pm</big></span>
       </div>
-      <div class="w3-display-middle w3-center">
-        <span class="w3-text-white"  style={{fontSize: '100px', color: '#0066cc'}}></span>
+      <div className="w3-display-middle w3-center">
+        <span className="w3-text-white"  style={{fontSize: '100px', color: '#0066cc'}}></span>
       </div>
-      <div class="w3-display-bottomright w3-center w3-padding-large">
-        <span class="w3-text-white" class="w3-tag" >Bach Khoa Campus, 268 Ly Thuong Kiet, HCMC</span>
+      <div className="w3-display-bottomright w3-center w3-padding-large">
+        <span className="w3-text-white" class="w3-tag" ><big>Bach Khoa Campus, 268 Ly Thuong Kiet, HCMC</big></span>
       </div>
-    </header>
+    </div>
     
 
     <div class="w3-sand w3-grayscale w3-large">
@@ -107,8 +97,7 @@ function HomeScreen(props) {
     
     
     
-    </body>
-    </html>
+    </div>
   
 }
 export default HomeScreen;
