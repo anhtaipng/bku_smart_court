@@ -7,15 +7,15 @@ import axios from "axios";
 //Order info -> generate report
 import { listOrders, } from '../actions/orderActions';
 
-// import Wijmo styles and components
-import "wijmo/styles/wijmo.css";
-import { CollectionView } from "wijmo/wijmo";
-import { FlexGrid } from "wijmo/wijmo.react.grid";
-import { FlexChart, FlexChartSeries } from "wijmo/wijmo.react.chart";
+// // import Wijmo styles and components
+// import "wijmo/styles/wijmo.css";
+// import { CollectionView } from "wijmo/wijmo";
+// import { FlexGrid } from "wijmo/wijmo.react.grid";
+// import { FlexChart, FlexChartSeries } from "wijmo/wijmo.react.chart";
 
-// apply Wijmo license key
-import { setLicenseKey } from "wijmo/wijmo";
-setLicenseKey("your key goes here");
+// // apply Wijmo license key
+// import { setLicenseKey } from "wijmo/wijmo";
+// setLicenseKey("your key goes here");
 
 function ManagerScreen(props) {
   const userList = useSelector((state) => state.userList);
@@ -23,44 +23,44 @@ function ManagerScreen(props) {
   const [vendor, setVendor] = useState("");
   const [data, setData] = useState([]);
 
-  const testGraph = [
-    {
-      name: "VietNam",
-      price: 12000,
-      expenses: Math.random() * 5000,
-      downloads: Math.round(Math.random() * 20000),
-    },
-    {
-      name: "USA",
-      price: 12000,
-      expenses: Math.random() * 5000,
-      downloads: Math.round(Math.random() * 20000),
-    }, {
-      name: "China",
-      price: 12000,
-      expenses: Math.random() * 5000,
-      downloads: Math.round(Math.random() * 20000),
-    }, {
-      name: "Korea",
-      price: 12000,
-      expenses: Math.random() * 5000,
-      downloads: Math.round(Math.random() * 20000),
-    }, {
-      name: "Australia",
-      price: 12000,
-      expenses: Math.random() * 5000,
-      downloads: Math.round(Math.random() * 20000),
-    },
-  ];
-  const total =testGraph.reduce((prev,cur)=>prev+cur.price,0);
-  var finalRow={
-    name: 'Total',
-    price: total,
-    expenses: 0,
-    downloads: 0,
-  }
+//   const testGraph = [
+//     {
+//       name: "VietNam",
+//       price: 12000,
+//       expenses: Math.random() * 5000,
+//       downloads: Math.round(Math.random() * 20000),
+//     },
+//     {
+//       name: "USA",
+//       price: 12000,
+//       expenses: Math.random() * 5000,
+//       downloads: Math.round(Math.random() * 20000),
+//     }, {
+//       name: "China",
+//       price: 12000,
+//       expenses: Math.random() * 5000,
+//       downloads: Math.round(Math.random() * 20000),
+//     }, {
+//       name: "Korea",
+//       price: 12000,
+//       expenses: Math.random() * 5000,
+//       downloads: Math.round(Math.random() * 20000),
+//     }, {
+//       name: "Australia",
+//       price: 12000,
+//       expenses: Math.random() * 5000,
+//       downloads: Math.round(Math.random() * 20000),
+//     },
+//   ];
+//   const total =testGraph.reduce((prev,cur)=>prev+cur.price,0);
+//   var finalRow={
+//     name: 'Total',
+//     price: total,
+//     expenses: 0,
+//     downloads: 0,
+//   }
  
-  testGraph.push(finalRow);
+//   testGraph.push(finalRow);
 
 
   const dispatch = useDispatch();
@@ -93,7 +93,7 @@ function ManagerScreen(props) {
   // const temp=users;
 
   const vendorSet = [
-    [
+    
       <div className="order-list">
         <table className="table">
           <thead>
@@ -201,34 +201,13 @@ function ManagerScreen(props) {
             ))}
           </tbody>
         </table>
-      </div>,
+      </div>
+  ]
       // {/* ))} */}
-    ],
+    
     //xử lý hiện thị thông tin order ở đây: VENDOR1
 
-    [
-      <div className="App">
-        {/* <header className="App-header">
-          <h1 className="App-title">Welcome to React and Wijmo</h1>
-        </header> */}
-        <p className="App-intro">
-          Hello, Hello. This is report from vendor 1
-        </p>
-        <div className="App-panel">
-          <FlexGrid itemsSource={testGraph} />
-          <FlexChart itemsSource={testGraph} bindingX="country">
-            <FlexChartSeries name="Sales" binding="sales" />
-            <FlexChartSeries name="Expenses" binding="expenses" />
-            <FlexChartSeries name="Downloads" binding="downloads" />
-          </FlexChart>
-        </div>
-      </div>
-    ],
-
-    //xử lý hiện thị thông tin order ở đây: VENDOR2
-
-    [<h1>Nothing here 2</h1>],
-  ];
+   ;
 
   const [toggle, setToggle] = useState("");
 
@@ -271,5 +250,5 @@ function ManagerScreen(props) {
       </div>
     </div>
   );
-  }
+}
 export default ManagerScreen;
