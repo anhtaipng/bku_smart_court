@@ -35,160 +35,52 @@ function ITstaffScreen(props) {
     window.location.reload();
   };
 
-  const prof = [
-    [
+  return loading ? <div>Loading...</div> :
+  <div className="content content-margined">
+      <div className="order-header">
+          <h3>USER</h3>
+      </div>
       <div className="order-list">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
-              <th>isMANAGE</th>
-              <th>isCHEF</th>
-              <th>ACTIONS</th>
-            </tr>
-          </thead>
-          <tbody>
-             {users?.map((user) => (
-              <tr key={user._id}>
-                <td>{user._id}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>
-                  {user.isAdmin ? (
-                    "Yes: " + user.vendor
-                  ) : (
-                    <input
-                      placeholder="Enter vendor you want to add this user"
-                      size="27"
-                      onChange={(e) => setVendor(e.target.value)}
-                    ></input>
-                  )}
-                </td>
-                <td>
-                  {user.isChef ? (
-                    "Yes: " + user.vendor
-                  ) : (
-                    <input
-                      placeholder="Enter vendor you want to add this user"
-                      size="27"
-                      onChange={(e) => setVendor(e.target.value)}
-                    ></input>
-                  )}
-                </td>
-                <td>
-                  {user.isAdmin && user.isChef ? (
-                    <div>
-                      <button
-                        className="button"
-                        onClick={() => deleteManagerHandler(user._id)}
-                      >
-                        deleteManager
-                      </button>
-                      <button
-                        className="button"
-                        onClick={() => deleteChefHandler(user._id)}
-                      >
-                        deleteChef
-                      </button>
-                    </div>
-                  ) : user.isAdmin && !user.isChef ? (
-                    <div>
-                      <button
-                        className="button"
-                        onClick={() => deleteManagerHandler(user._id)}
-                      >
-                        deleteManager
-                      </button>
-                      <button
-                        className="button"
-                        onClick={() => addChefHandler(user._id)}
-                      >
-                        addChef
-                      </button>
-                    </div>
-                  ) : !user.isAdmin && user.isChef ? (
-                    <div>
-                      <button
-                        className="button"
-                        onClick={() => addManagerHandler(user._id)}
-                      >
-                        addManager
-                      </button>
-                      <button
-                        className="button"
-                        onClick={() => deleteChefHandler(user._id)}
-                      >
-                        deleteChef
-                      </button>
-                    </div>
-                  ) : (
-                    <div>
-                      <button
-                        className="button"
-                        onClick={() => addManagerHandler(user._id)}
-                      >
-                        addManager
-                      </button>
-                      <button
-                        className="button"
-                        onClick={() => addChefHandler(user._id)}
-                      >
-                        addChef
-                      </button>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            ))} 
-          </tbody>
-        </table>
-      </div>,
-    ],
-    [],
-  ];
-  const [toggle, setToggle] = useState("");
 
-  return loading ? (
-    <div>Loading...</div>
-  ) : (
-    
-    <div>
-     
+          <table className="table">
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>NAME</th>
+                      <th>EMAIL</th>
+                      <th>isMANAGE</th>
+                      <th>isCHEF</th>
+                      <th>ACTIONS</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {users.map(user => (<tr key={user._id}>
+                      <td>{user._id}</td>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.isAdmin?("Yes: "+ user.vendor):<input placeholder="Enter vendor you want to add this user" size = "27" 
+                      onChange={(e) => setVendor(e.target.value)}></input>}</td>
+                      <td>{user.isChef?("Yes: "+ user.vendor):<input placeholder="Enter vendor you want to add this user" size = "27"
+                      onChange={(e) => setVendor(e.target.value)}></input>}</td>
+                      <td>{(user.isAdmin && user.isChef) ?
+                          <div><button className="button" onClick={() => deleteManagerHandler(user._id)}>deleteManager</button>
+                              <button className="button" onClick={() => deleteChefHandler(user._id)}>deleteChef</button></div>
+                          : (user.isAdmin && !user.isChef) ?
+                              <div><button className="button" onClick={() => deleteManagerHandler(user._id)}>deleteManager</button>
+                                  <button className="button" onClick={() => addChefHandler(user._id)}>addChef</button></div>
+                              : (!user.isAdmin && user.isChef) ?
+                              <div><button className="button" onClick={() => addManagerHandler(user._id)}>addManager</button>  
+                                  <button className="button" onClick={() => deleteChefHandler(user._id)}>deleteChef</button></div>
+                                  :<div><button className="button" onClick={() => addManagerHandler(user._id)}>addManager</button>
+                                  <button className="button" onClick={() => addChefHandler(user._id)}>addChef</button></div>
+                      }
 
-<div>
-      
-        <nav>
-          <ul>
-            <li>
-              <a key={prof} onClick={() => setToggle(prof)}>
-                User Information
-              </a>
-            </li>
-            <li>
-              <a href="#"> Maintenance Mode </a>{" "}
-              <ul>
-                <li>
-                  <label className="switch">
-                    <input type="checkbox" />
-                    <div className="switch-btn"> </div>{" "}
-                  </label>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
+                      </td>
+
+                  </tr>))}
+              </tbody>
+          </table>
+        </div>             
       </div>
-      <div>
-        <p>{toggle}</p>
-        <p>{toggle === "police" 
-        && "this is police"}</p>
-      </div>
-     
-    </div>
-  );
 }
-
-
 export default ITstaffScreen;
