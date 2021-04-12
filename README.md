@@ -8,4 +8,4 @@ To run the project on local computer, please follow these steps:
 - Turn on terminal or cmd, change directory to folder "bku_smart_court" and enter "npm start" to run the backend server.
 - Turn on new terminal, change directory to folder "frontend" and enter "npm start" to run the project on web browser.
 
-~Pham Nguyen Anh Tai~
+Pham Nguyen Anh Tai
